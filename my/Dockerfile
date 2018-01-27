@@ -23,7 +23,7 @@ RUN pip install uwsgi
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ## Install pip packages
-ADD ./requirement.txt requirement.txt 
+ADD requirement.txt requirement.txt 
 RUN pip3 install -r requirement.txt
 
 # Setting working env
