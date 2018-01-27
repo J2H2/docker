@@ -1,7 +1,19 @@
 FROM jun2org/docker:ubuntu16-python3.6
 
-ADD ./requirement.txt requirement.txt 
+# Install
+RUN apt-get update
 
+## Install packages
+RUN apt-get install -y memcached
+
+## Clean up
+RUN apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+
+## Install pip packages
+ADD ./requirement.txt requirement.txt 
 RUN pip3 install -r requirement.txt
 
+# Setting working env
 WORKDIR /htdocs/www
+EXPOSE 8000
+CMD make run
