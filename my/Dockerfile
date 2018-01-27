@@ -14,6 +14,9 @@ ADD ./requirement.txt requirement.txt
 RUN pip3 install -r requirement.txt
 
 # Setting working env
-WORKDIR /htdocs/www
+VOLUME /htdocs/www
 EXPOSE 8000
+
+WORKDIR /htdocs/www
+
 CMD make run
