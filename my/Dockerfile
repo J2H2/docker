@@ -33,6 +33,8 @@ EXPOSE 443
 
 WORKDIR /htdocs/www
 
-ENTRYPOINT make install
+ADD Makefile /htdocs/www/Makefile
+ADD entrypoint.sh /usr/local/bin/entrypoint.sh
+ENTRYPOINT /usr/local/bin/entrypoint.sh
 
 CMD ["/usr/bin/supervisord"]
