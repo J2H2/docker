@@ -33,4 +33,6 @@ EXPOSE 443
 
 WORKDIR /htdocs/www
 
+ENTRYPOINT make install
+
 CMD ["/usr/bin/supervisord"]
