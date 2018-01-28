@@ -22,18 +22,18 @@ RUN pip install uwsgi
 ## Install supervisord
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+## Install source
+WORKDIR /htdocs/www
+RUN git clone https://github.com/jun2org/my.git ./
+
 ## Install pip packages
-ADD requirement.txt requirement.txt 
-RUN pip3 install -r requirement.txt
+RUN make python-package-install
 
 # Setting working env
 VOLUME ["/htdocs/www"]
 EXPOSE 80
 EXPOSE 443
 
-WORKDIR /htdocs/www
-
-ADD Makefile /htdocs/www/Makefile
 ADD entrypoint.sh /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
