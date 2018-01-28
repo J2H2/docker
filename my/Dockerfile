@@ -4,7 +4,7 @@ FROM jun2org/docker:ubuntu16-python3.6
 RUN apt-get update
 
 ## Install packages
-RUN apt-get install -y memcached nginx supervisor
+RUN apt-get install -y memcached nginx supervisor git
 
 ## Clean up
 RUN apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
