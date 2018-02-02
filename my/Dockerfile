@@ -12,6 +12,7 @@ RUN apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 ## Install nginx
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN rm /etc/nginx/sites-enabled/default
+ADD cert /etc/nginx/cert
 ADD nginx.conf /etc/nginx/conf.d/
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
 
