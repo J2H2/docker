@@ -5,6 +5,7 @@ RUN apt-get update
 
 ## Install packages
 RUN apt-get install -y memcached nginx supervisor git
+RUN apt-get install -y mysql-client libmysqlclient-dev
 
 ## Clean up
 RUN apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
